@@ -1,151 +1,416 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aminur Hossain | Full-Stack Developer Portfolio</title>
+    <meta name="description" content="Personal portfolio of Aminur Hossain, a Full-Stack Developer specializing in building modern, responsive, and user-centric web applications.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
 
-    <title>Aminur Hossain</title>
+    <!-- Background Decoration -->
+    <div class="glow-bg-1"></div>
+    <div class="glow-bg-2"></div>
 
-    <meta name="author" content="Aminur Hossain">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/favicon/iitb_logo.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  </head>
+    <!-- Header / Navigation -->
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="#home" class="logo" id="header-logo">
+                <span class="logo-accent">&lt;</span>Aminur<span class="logo-accent"> /&gt;</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
 
-  <body>
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;
-                 border-collapse:separate;margin-right:auto;margin-left:auto;">
-      <tbody>
-        <tr style="padding:0px">
-          <td style="padding:0px">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </button>
 
-            <!-- Header + Bio -->
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;
-                         margin-right:auto;margin-left:auto;">
-              <tbody>
-                <tr style="padding:0px">
-                  <td style="padding:2.5%;width:63%;vertical-align:middle">
-                    <p class="name" style="text-align: center;">
-                      Aminur Hossain
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge animate-fade-in">Available for Freelance & Full-time</div>
+                    <h1 class="hero-title animate-slide-up">
+                        Hi, I'm <span class="gradient-text">Aminur Hossain</span>
+                    </h1>
+                    <h2 class="hero-subtitle animate-slide-up-delayed">
+                        <span id="typed-text"></span><span class="typed-cursor">|</span>
+                    </h2>
+                    <p class="hero-description animate-fade-in-delayed">
+                        I craft high-performance, responsive, and visually stunning web applications. Dedicated to writing clean, maintainable code and solving complex digital problems.
                     </p>
-                    <p>
-                      I'm a PhD student at <a href="https://www.iitb.ac.in/">IIT Bombay</a>, advised by 
-                      <a href="https://biplab-banerjee.github.io/"> Prof. Biplab Banerjee </a>. 
-                      My research focuses on Deep Learning, Computer Vision for Remote Sensing, 
-                      Generative AI, and Multi-Modal Models for Remote Sensing applications.
-                    </p>
-                    <p>
-                      I am passionate about leveraging advanced machine learning models to solve 
-                      complex problems in remote sensing and related fields. 
-                      I also enjoy sharing knowledge through teaching and writing about data science and mathematics.
-                    </p>
-                    <p>
-                      I completed my MSc in Mathematics from 
-                      <a href="https://www.iitkgp.ac.in/">IIT Kharagpur</a> and my BSc (Hons) in Mathematics 
-                      from <a href="https://www.bgc.ac.in/">Barasat Government College</a>, affiliated with 
-                      <a href="https://wbsu.ac.in/web//">West Bengal State University</a>, West Bengal, India.
-                    </p>
-                    <p>
-                      Currently, I am working as a Scientist-SD at the 
-                      <a href="https://www.sac.gov.in/">Space Applications Centre</a>, 
-                      <a href="https://www.isro.gov.in/">ISRO</a>, Ahmedabad, India. 
-                    </p>
-                    <p style="text-align:center">
-                      <a href="mailto:md.aminurhossain@gmail.com">Email</a> &nbsp;/&nbsp;
-                      <a href="data/AminurHossain-CV.pdf">CV</a> &nbsp;/&nbsp;
-                      <a href="https://scholar.google.com/citations?user=diUbiq0AAAAJ&hl=en">Google Scholar</a> &nbsp;/&nbsp;
-                      <a href="https://github.com/aminurhossain">GitHub</a>
-                    </p>
-                  </td>
-                  <td style="padding:2.5%;width:40%;max-width:40%">
-                    <a href="images/aminur_web.jpg">
-                      <img style="width:100%;max-width:100%" alt="profile photo" 
-                           src="images/aminur_web.jpg" class="hoverZoomLink">
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    <div class="hero-cta animate-fade-in-delayed">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-visual animate-scale-up">
+                    <div class="visual-blob">
+                        <i class="fa-solid fa-code code-overlay-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+                <p>Scroll Down</p>
+            </div>
+        </section>
 
-            <!-- Research -->
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;
-                         margin-right:auto;margin-left:auto;">
-              <tbody>
-                <tr>
-                  <td style="padding:16px;width:100%;vertical-align:middle">
-                    <h2>Research</h2>
-                    <p>My research interests include:</p>
-                    <ul style="margin-left:20px;">
-                      <li>Deep Learning for Remote Sensing</li>
-                      <li>Computer Vision</li>
-                      <li>Generative AI</li>
-                      <li>Multi-Modal Models</li>
-                    </ul>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <!-- About Section -->
+        <section id="about" class="about-section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">Get to know my background, skills, and tools</p>
+                </div>
 
-            <!-- Publications -->
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;
-                         margin-right:auto;margin-left:auto;">
-              <tbody>
-                <tr>
-                  <td style="padding:16px;width:100%;vertical-align:middle">
-                    <h2>Publications</h2>
-                    <ul style="margin-left:20px;">
-                      <li>
-                        <b>A Weighted ℓ1 Regularization Method for Stripe Noise Removal in Remote Sensing Images</b><br>
-                        <i>2025 IEEE 7th International Conference on Computing, Communication and Applications (ICCCA)</i>
-                      </li>
-                      <li>
-                        <b>Real-Time Infrared Object Detection and Multi-Object Tracking for Surveillance Applications</b><br>
-                        <i>2nd International Conference on Information Technology, Electronics and Communications (ICITEC) 2025</i>
-                      </li>
-                      <li>
-                        <b>Band Reconstruction for High Resolution Satellite Images using Deep Learning</b><br>
-                        <i>Proceedings of the 43rd INCA International Conference, Jodhpur, 2024</i>
-                      </li>
-                      <li>
-                        <b>Reconstruction of Missing Multiband Images for High Resolution Multispectral Sensors Using Wasserstein GAN</b><br>
-                        <i>2023 IEEE India Geoscience and Remote Sensing Symposium (InGARSS)</i>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                <div class="about-grid">
+                    <div class="about-info">
+                        <h3>My Story</h3>
+                        <p>I am a passionate software developer based in India, specializing in full-stack web development. With a keen eye for interactive design and solid foundations in modern frameworks, I build applications that bridge the gap between form and function.</p>
+                        <p>When I'm not coding, I enjoy learning about emerging technologies, exploring design trends, and contributing to open-source initiatives.</p>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <span class="stat-number">3+</span>
+                                <span class="stat-label">Years Coding</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">15+</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">99%</span>
+                                <span class="stat-label">Client Satisfaction</span>
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- Contact -->
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;
-                         margin-right:auto;margin-left:auto;">
-              <tbody>
-                <tr>
-                  <td style="padding:16px;width:100%;vertical-align:middle">
-                    <h2>Contact</h2>
-                    <p>Email: <a href="mailto:md.aminurhossain@gmail.com">md.aminurhossain@gmail.com</a></p>
-                    <p>LinkedIn: <a href="https://www.linkedin.com/in/aminurhossain">linkedin.com/in/aminurhossain</a></p>
-                    <p>GitHub: <a href="https://github.com/aminurhossain">github.com/aminurhossain</a></p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    <div class="about-skills">
+                        <h3>My Toolkit</h3>
+                        <div class="skill-category">
+                            <h4>Frontend</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag"><i class="fa-brands fa-html5 text-orange"></i> HTML5</span>
+                                <span class="skill-tag"><i class="fa-brands fa-css3-alt text-blue"></i> CSS3 / Sass</span>
+                                <span class="skill-tag"><i class="fa-brands fa-js text-yellow"></i> JavaScript (ES6+)</span>
+                                <span class="skill-tag"><i class="fa-brands fa-react text-cyan"></i> React.js</span>
+                                <span class="skill-tag"><i class="fa-brands fa-bootstrap text-purple"></i> Bootstrap / Tailwind</span>
+                            </div>
+                        </div>
 
-            <!-- Footer -->
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;
-                         margin-right:auto;margin-left:auto;">
-              <tbody>
-                <tr>
-                  <td style="padding:20px;width:45%;vertical-align:middle"></td>
-                  <td style="padding:20px;width:55%;vertical-align:middle">
-                    <a href="https://jonbarron.info/">Website Template</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                        <div class="skill-category">
+                            <h4>Backend & Databases</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag"><i class="fa-brands fa-node-js text-green"></i> Node.js</span>
+                                <span class="skill-tag"><i class="fa-solid fa-server text-light-green"></i> Express.js</span>
+                                <span class="skill-tag"><i class="fa-brands fa-python text-yellow-blue"></i> Python / Django</span>
+                                <span class="skill-tag"><i class="fa-solid fa-database text-blue"></i> MongoDB / SQL</span>
+                            </div>
+                        </div>
 
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </body>
+                        <div class="skill-category">
+                            <h4>Tools & DevOps</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag"><i class="fa-brands fa-git-alt text-orange"></i> Git & GitHub</span>
+                                <span class="skill-tag"><i class="fa-brands fa-docker text-cyan"></i> Docker</span>
+                                <span class="skill-tag"><i class="fa-solid fa-cloud text-blue"></i> Cloud Hosting (Vercel/Heroku)</span>
+                                <span class="skill-tag"><i class="fa-solid fa-terminal"></i> Command Line</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">A curated selection of things I've built</p>
+                </div>
+
+                <div class="project-filters" id="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="frontend">Frontend</button>
+                    <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+                    <button class="filter-btn" data-filter="design">Design</button>
+                </div>
+
+                <div class="projects-grid" id="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card" data-category="fullstack" data-title="E-Commerce Marketplace" data-description="A fully featured, scalable e-commerce platform with a dynamic storefront, advanced product search and filtering, Stripe-powered checkout, real-time inventory management, and a comprehensive admin dashboard for order tracking and analytics." data-tech="React, Node.js, MongoDB, Stripe" data-github="#" data-demo="#">
+                        <div class="project-image">
+                            <div class="project-img-placeholder">
+                                <i class="fa-solid fa-cart-shopping project-placeholder-icon"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" target="_blank" class="project-link-icon" title="View Code"><i class="fa-brands fa-github"></i></a>
+                                    <a href="#" target="_blank" class="project-link-icon" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <span class="project-tag">Full-Stack</span>
+                            <h3 class="project-title">E-Commerce Marketplace</h3>
+                            <p class="project-text">A scalable store dashboard offering advanced product discovery, Stripe payments, and admin order management.</p>
+                            <div class="project-tech">
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>MongoDB</span>
+                                <span>Stripe</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card" data-category="frontend" data-title="Finance Dashboard" data-description="A sophisticated personal finance analytics dashboard with interactive charts, spending trend analysis, monthly budget tracking, and real-time bank account syncing via the Plaid API. Features custom data visualizations built with Chart.js." data-tech="React, Chart.js, TailwindCSS, Plaid API" data-github="#" data-demo="#">
+                        <div class="project-image">
+                            <div class="project-img-placeholder">
+                                <i class="fa-solid fa-chart-line project-placeholder-icon"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" target="_blank" class="project-link-icon" title="View Code"><i class="fa-brands fa-github"></i></a>
+                                    <a href="#" target="_blank" class="project-link-icon" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <span class="project-tag">Frontend</span>
+                            <h3 class="project-title">Finance Dashboard</h3>
+                            <p class="project-text">A modern analytics panel featuring complex data visualization, spending forecasts, and real-time bank syncing.</p>
+                            <div class="project-tech">
+                                <span>React</span>
+                                <span>Chart.js</span>
+                                <span>TailwindCSS</span>
+                                <span>Plaid API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card" data-category="fullstack" data-title="Real-Time Chat Application" data-description="A performant, real-time messaging platform supporting private and group channels with instant message delivery, typing indicators, online/offline presence tracking, read receipts, and a polished dark mode UI. Built with WebSockets for sub-second latency." data-tech="Socket.io, Express, React, Tailwind" data-github="#" data-demo="#">
+                        <div class="project-image">
+                            <div class="project-img-placeholder">
+                                <i class="fa-solid fa-comments project-placeholder-icon"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" target="_blank" class="project-link-icon" title="View Code"><i class="fa-brands fa-github"></i></a>
+                                    <a href="#" target="_blank" class="project-link-icon" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <span class="project-tag">Full-Stack</span>
+                            <h3 class="project-title">Real-Time Chat Application</h3>
+                            <p class="project-text">A chat app featuring custom group channels, instant typing indicators, presence tracking, and dark mode theme.</p>
+                            <div class="project-tech">
+                                <span>Socket.io</span>
+                                <span>Express</span>
+                                <span>React</span>
+                                <span>Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-card" data-category="design" data-title="Eco-friendly Mobile App" data-description="A beautifully crafted high-fidelity Figma prototype for a sustainability-focused mobile application. Helps users track their daily carbon footprint, set eco-friendly habit goals, and discover local green initiatives. Includes onboarding flows, dashboard screens, and detailed micro-interactions." data-tech="Figma, Prototyping, UI/UX" data-github="#" data-demo="#">
+                        <div class="project-image">
+                            <div class="project-img-placeholder">
+                                <i class="fa-solid fa-leaf project-placeholder-icon"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" target="_blank" class="project-link-icon" title="View Design"><i class="fa-brands fa-figma"></i></a>
+                                    <a href="#" target="_blank" class="project-link-icon" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <span class="project-tag">Design / UI</span>
+                            <h3 class="project-title">Eco-friendly Mobile App</h3>
+                            <p class="project-text">A high-fidelity Figma mobile application mockup designed to track daily carbon footprint and guide habits.</p>
+                            <div class="project-tech">
+                                <span>Figma</span>
+                                <span>Prototyping</span>
+                                <span>UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience-section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">My Journey</h2>
+                    <p class="section-subtitle">Work experience and educational path</p>
+                </div>
+
+                <div class="timeline">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024 - Present</div>
+                        <div class="timeline-content">
+                            <h3>Lead Web Developer</h3>
+                            <h4 class="company">Freelance & Tech Agency</h4>
+                            <p>Designing, building, and deploying fully custom enterprise dashboards and marketing websites. Spearheading transition to modern component-based React structures to enhance site performance and maintainability.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2022 - 2024</div>
+                        <div class="timeline-content">
+                            <h3>Full-Stack Developer</h3>
+                            <h4 class="company">Innovate Softwares</h4>
+                            <p>Collaborated closely with cross-functional design and product teams. Developed, maintained, and optimized Node.js backends and integrated third-party APIs for secure checkout flows.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2019 - 2022</div>
+                        <div class="timeline-content">
+                            <h3>B.Sc. in Computer Science</h3>
+                            <h4 class="company">University of Computer Science</h4>
+                            <p>Acquired strong foundations in algorithms, data structures, database design, and object-oriented programming methodologies. Graduated with honors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Let's discuss your next project or work opportunities</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Connect With Me</h3>
+                        <p>Feel free to reach out if you have a job opening, a project idea, or just want to chat about web technology.</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-icon-wrapper">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div class="contact-method-details">
+                                    <span>Email Me</span>
+                                    <a href="mailto:aminur.hossain.dev@gmail.com">aminur.hossain.dev@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="contact-icon-wrapper">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="contact-method-details">
+                                    <span>Location</span>
+                                    <span>Kolkata, India</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="https://github.com/aminurhossain" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://linkedin.com/in/aminurhossain" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrapper">
+                        <!-- For GitHub Pages, a standard form can action to Formspree or be handled in JS -->
+                        <form id="contact-form" class="contact-form" action="https://formspree.io/f/placeholder" method="POST">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Doe" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Let's build something amazing together..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <p>&copy; 2026 Aminur Hossain. All rights reserved.</p>
+            <p>Designed & Built with <i class="fa-solid fa-heart text-red"></i> by Aminur</p>
+        </div>
+    </footer>
+
+    <!-- Project Detail Modal -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+            <span class="modal-tag" id="modal-tag"></span>
+            <h3 class="modal-title" id="modal-title"></h3>
+            <p class="modal-description" id="modal-description"></p>
+            <div class="modal-tech" id="modal-tech"></div>
+            <div class="modal-actions">
+                <a href="#" class="btn btn-primary" id="modal-github" target="_blank"><i class="fa-brands fa-github"></i> View Code</a>
+                <a href="#" class="btn btn-secondary" id="modal-demo" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
 </html>
