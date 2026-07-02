@@ -332,6 +332,7 @@ input, textarea, button {
     letter-spacing: -0.5px;
     display: flex;
     align-items: center;
+    gap: 0.35rem;
 }
 
 .logo-accent {
