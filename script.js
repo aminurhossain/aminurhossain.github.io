@@ -1,42 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==========================================
-    // CUSTOM CURSOR
-    // ==========================================
-    const cursor = document.getElementById('cursor');
-    const cursorFollower = document.getElementById('cursor-follower');
-    let mouseX = 0, mouseY = 0;
-    let followerX = 0, followerY = 0;
 
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursor.style.left = mouseX + 'px';
-        cursor.style.top = mouseY + 'px';
-    });
-
-    // Smooth follower trail with requestAnimationFrame
-    function animateFollower() {
-        followerX += (mouseX - followerX) * 0.12;
-        followerY += (mouseY - followerY) * 0.12;
-        cursorFollower.style.left = followerX + 'px';
-        cursorFollower.style.top = followerY + 'px';
-        requestAnimationFrame(animateFollower);
-    }
-    animateFollower();
-
-    // Cursor hover effect on interactive elements
-    const hoverTargets = document.querySelectorAll('a, button, .project-card, .skill-tag, .stat-card, .filter-btn, input, textarea');
-    hoverTargets.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.classList.add('hover');
-            cursorFollower.classList.add('hover');
-        });
-        el.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hover');
-            cursorFollower.classList.remove('hover');
-        });
-    });
 
     // ==========================================
     // MOBILE NAVIGATION MENU

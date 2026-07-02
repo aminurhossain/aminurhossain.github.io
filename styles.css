@@ -95,7 +95,6 @@ body {
     overflow-x: hidden;
     position: relative;
     transition: background-color 0.5s ease, color 0.5s ease;
-    cursor: none;
 }
 
 a {
@@ -1613,50 +1612,7 @@ footer {
     }
 }
 
-/* ==========================================
-   CUSTOM CURSOR
-   ========================================== */
-.cursor {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--accent-indigo);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
-}
 
-.cursor.hover {
-    width: 18px;
-    height: 18px;
-    background: var(--accent-purple);
-}
-
-.cursor-follower {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1.5px solid var(--accent-indigo);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9998;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: width 0.4s ease, height 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
-    opacity: 0.5;
-}
-
-.cursor-follower.hover {
-    width: 55px;
-    height: 55px;
-    border-color: var(--accent-purple);
-    opacity: 0.3;
-}
 
 /* ==========================================
    THEME TOGGLE
@@ -1829,24 +1785,8 @@ footer {
     margin-right: 0.5rem;
 }
 
-/* Hide custom cursor on touch and small screens */
 @media (max-width: 768px) {
-    .cursor, .cursor-follower {
-        display: none;
-    }
-    body {
-        cursor: auto;
-    }
     .modal-content {
         padding: 2rem 1.5rem;
-    }
-}
-
-@media (hover: none) {
-    .cursor, .cursor-follower {
-        display: none;
-    }
-    body {
-        cursor: auto;
     }
 }
