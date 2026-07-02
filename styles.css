@@ -458,7 +458,18 @@ input, textarea, button {
     align-items: center;
     position: relative;
     box-shadow: var(--shadow-glow);
+    overflow: hidden; /* ensures image doesn't overflow morphing border */
 }
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    border: 3px solid transparent;
+    transition: var(--transition-normal);
+}
+
 
 .code-overlay-icon {
     font-size: 6rem;
