@@ -1,42 +1,33 @@
-# Aminur Hossain - Personal Portfolio Website
+# Aminur Hossain - Research Portfolio
 
-A premium, modern, and highly interactive single-page portfolio website designed and optimized for developers. Ready to be deployed out-of-the-box to **GitHub Pages**.
+A single-page GitHub Pages portfolio for Aminur Hossain, focused on academic profile, research areas, professional experience, publications, and contact links.
 
 ## Features
 
-- **Premium Design Aesthetics**: Ambient background glow filters, glassmorphism header, curated dark-mode color palette, and high-quality fonts (`Outfit` and `Inter`).
-- **Responsive Layout**: Designed mobile-first, supporting fluid scaling across mobile, tablet, and desktop viewports.
-- **Micro-Animations**: Smooth CSS transitions, scrolling tracking header, blob floating animation, and elegant card scaling on hover.
-- **Dynamic Portfolio Filtering**: Instantly filter projects by category (Frontend, Full-Stack, Design) with animated fade-in and scale layouts.
-- **Interactive Contact Form**: Custom feedback loop showing sending and success animations on submission.
-- **Zero Build Step**: Native HTML5, CSS3, and JavaScript logic without complex framework overheads, yielding incredibly fast load times.
+- Responsive research portfolio layout for desktop, tablet, and mobile screens.
+- Sections for About, Research Highlights, Experience, Publications, and Contact.
+- Dark/light theme toggle with saved browser preference.
+- Interactive publication citation buttons for copying BibTeX entries.
+- Project/research-area modal cards with links to GitHub and Google Scholar.
+- Static contact form powered by FormSubmit.
+- Zero build step: plain HTML, CSS, and JavaScript.
 
-## How to Customize
+## Site Structure
 
-1. **Modify Text & Profiles**:
-   Open `index.html` and replace all occurrences of `Aminur Hossain` or email details with your own personal info.
-2. **Update Social & Resume Links**:
-   Locate the social links section (lines ~310-314) and change the URLs to direct to your GitHub, LinkedIn, etc.
-3. **Change Project Items**:
-   To add or remove showcase cards, update the `.projects-grid` structure in `index.html`. Assign correct `data-category` attributes to ensure filters operate correctly.
-4. **Contact Form**:
-   The contact form posts through FormSubmit to the email address configured in `index.html`. On the first submission, FormSubmit may send an activation email before forwarding messages.
+- `index.html` - page content, profile details, publications, links, and contact form configuration.
+- `styles.css` - responsive layout, theme variables, animations, and component styling.
+- `script.js` - navigation behavior, theme toggle, typing animation, modals, reveal effects, and BibTeX copy handling.
+- `profile.jpg` - profile image used in the hero section.
 
-## How to Deploy to GitHub Pages
+## Update Guide
 
-Since this repository is named `aminurhossain.github.io`, it will serve as your user site.
+1. Edit profile text, research highlights, experience, and publications in `index.html`.
+2. Update external profile links in the hero, project cards, and contact section.
+3. Configure the contact form email in the `form` action in `index.html`.
+4. Adjust visual styling in `styles.css`.
 
-1. **Commit and Push to GitHub**:
-   ```bash
-   git add .
-   git commit -m "Initial commit of portfolio website files"
-   git branch -M main
-   # Add your remote repository:
-   git remote add origin https://github.com/aminurhossain/aminurhossain.github.io.git
-   git push -u origin main
-   ```
-2. **Enable GitHub Pages**:
-   - Go to your repository settings on GitHub.
-   - Select **Pages** from the left-hand menu.
-   - Under **Build and deployment**, ensure the source is set to **Deploy from a branch** and choose `main` (or `master`) branch and `/root` folder.
-   - Click Save. Your website will be live shortly at `https://aminurhossain.github.io/`!
+## Deploying
+
+This repository is named `aminurhossain.github.io`, so GitHub Pages can serve it as a user site from the root of the `main` branch.
+
+Push changes to `main`, then confirm GitHub Pages is enabled in repository settings under **Pages** with source set to the `main` branch and `/root` folder.
