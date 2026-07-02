@@ -134,10 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const typedElement = document.getElementById('typed-text');
     const phrases = [
-        'Full-Stack Developer',
-        'UI/UX Enthusiast',
-        'Creative Problem Solver',
-        'Open-Source Contributor'
+        'Deep Learning Researcher',
+        'Computer Vision Scientist',
+        'Remote Sensing Expert',
+        'Quantum ML Pioneer'
     ];
     let phraseIndex = 0;
     let charIndex = 0;
