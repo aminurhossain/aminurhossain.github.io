@@ -876,6 +876,29 @@ input, textarea, button {
     font-size: 0.95rem;
 }
 
+.phd-meta {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 1.2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 3px solid var(--accent-indigo);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.phd-meta span {
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.phd-meta span strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+
 /* ==========================================
    CONTACT SECTION
    ========================================== */
