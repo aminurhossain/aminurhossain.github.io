@@ -5,7 +5,7 @@ A single-page GitHub Pages portfolio for Aminur Hossain, focused on academic pro
 ## Features
 
 - Responsive research portfolio layout for desktop, tablet, and mobile screens.
-- Sections for About, Research Highlights, Experience, Publications, and Contact.
+- Sections for About, Highlights, Research Highlights, Experience, Publications, and Contact.
 - Dark/light theme toggle with saved browser preference.
 - Interactive publication citation buttons for copying BibTeX entries.
 - Project/research-area modal cards with links to GitHub and Google Scholar.

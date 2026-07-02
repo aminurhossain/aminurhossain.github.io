@@ -625,6 +625,85 @@ input, textarea, button {
 }
 
 /* ==========================================
+   HIGHLIGHTS SECTION
+   ========================================== */
+.highlights-section {
+    padding: 8rem 0;
+}
+
+.highlights-list {
+    max-width: 920px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+}
+
+.highlight-item {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 1.4rem;
+    background: var(--gradient-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    transition: var(--transition-normal);
+}
+
+.highlight-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-md);
+}
+
+.highlight-date {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.highlight-date strong {
+    width: fit-content;
+    color: var(--accent-indigo);
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.18);
+    border-radius: 999px;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.72rem;
+}
+
+.highlight-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.45rem;
+}
+
+.highlight-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0.85rem;
+}
+
+.highlight-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent-indigo);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.highlight-link:hover {
+    color: var(--accent-purple);
+}
+
+/* ==========================================
    PROJECTS SECTION
    ========================================== */
 .projects-section {
@@ -1498,6 +1577,17 @@ footer {
     .about-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
+    }
+
+    .highlight-item {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+
+    .highlight-date {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
     
     .projects-grid {
