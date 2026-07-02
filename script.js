@@ -353,4 +353,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ==========================================
+    // BIBTEX COPY TO CLIPBOARD
+    // ==========================================
+    const bibtexButtons = document.querySelectorAll('.bibtex-btn');
+    bibtexButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const bibtexText = btn.getAttribute('data-bibtex');
+            navigator.clipboard.writeText(bibtexText).then(() => {
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check" style="color: #22c55e;"></i> Copied!';
+                btn.style.borderColor = '#22c55e';
+                btn.style.color = '#22c55e';
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.borderColor = '';
+                    btn.style.color = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('Could not copy BibTeX: ', err);
+            });
+        });
+    });
 });

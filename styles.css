@@ -447,19 +447,26 @@ input, textarea, button {
     align-items: center;
 }
 
-.visual-blob {
+.profile-image-container {
     width: 320px;
     height: 320px;
-    background: var(--gradient-accent);
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    animation: blob-bounce 8s ease-in-out infinite;
+    border-radius: 50%;
+    border: 6px solid var(--bg-secondary);
+    outline: 2px solid var(--accent-indigo);
+    box-shadow: var(--shadow-md), var(--shadow-glow);
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    box-shadow: var(--shadow-glow);
-    overflow: hidden; /* ensures image doesn't overflow morphing border */
+    transition: var(--transition-normal);
 }
+
+.profile-image-container:hover {
+    outline-color: var(--accent-purple);
+    transform: translateY(-5px);
+}
+
 
 .profile-img {
     width: 100%;
@@ -876,26 +883,203 @@ input, textarea, button {
     font-size: 0.95rem;
 }
 
-.phd-meta {
-    margin-top: 1rem;
+.phd-card {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(99, 102, 241, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--accent-indigo);
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-normal);
+}
+
+.timeline-item:hover .phd-card {
+    background: rgba(99, 102, 241, 0.06);
+    border-color: rgba(99, 102, 241, 0.2);
+    box-shadow: var(--shadow-glow);
+}
+
+.phd-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.phd-badge-role {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.phd-badge-role.candidate {
+    background: rgba(99, 102, 241, 0.1);
+    color: #a5b4fc;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.phd-badge-role.scientist {
+    background: rgba(59, 130, 246, 0.1);
+    color: #93c5fd;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.phd-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem !important;
+}
+
+.phd-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.phd-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.phd-meta-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--accent-indigo);
+    font-size: 1rem;
+}
+
+.phd-meta-text {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem 1.2rem;
-    background: rgba(255, 255, 255, 0.02);
-    border-left: 3px solid var(--accent-indigo);
-    border-radius: 4px;
-    font-size: 0.9rem;
 }
 
-.phd-meta span {
-    color: var(--text-secondary);
-    line-height: 1.4;
+.phd-meta-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.phd-meta span strong {
-    color: var(--text-primary);
+.phd-meta-val {
+    font-size: 0.95rem;
     font-weight: 600;
+    color: var(--text-primary);
+}
+
+.phd-meta-val.highlight {
+    color: #fbbf24;
+}
+
+.phd-meta-val .scale {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.phd-topics {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.phd-topics-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.phd-topics-title i {
+    color: #fbbf24;
+}
+
+.phd-topics-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.phd-topic-tag {
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition-fast);
+}
+
+.phd-topic-tag:hover {
+    background: rgba(99, 102, 241, 0.08);
+    color: var(--text-primary);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* Light Theme overrides for PhD Card */
+[data-theme="light"] .phd-card {
+    background: rgba(99, 102, 241, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-left: 4px solid var(--accent-indigo);
+}
+
+[data-theme="light"] .phd-badge-role.candidate {
+    background: rgba(99, 102, 241, 0.08);
+    color: #4f46e5;
+    border-color: rgba(99, 102, 241, 0.15);
+}
+
+[data-theme="light"] .phd-badge-role.scientist {
+    background: rgba(59, 130, 246, 0.08);
+    color: #2563eb;
+    border-color: rgba(59, 130, 246, 0.15);
+}
+
+[data-theme="light"] .phd-meta-grid {
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .phd-meta-icon {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .phd-meta-val.highlight {
+    color: #d97706;
+}
+
+[data-theme="light"] .phd-topic-tag {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .phd-topic-tag:hover {
+    background: rgba(99, 102, 241, 0.05);
+    color: var(--accent-indigo);
+    border-color: rgba(99, 102, 241, 0.2);
+}
+
+@media (max-width: 576px) {
+    .phd-meta-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
 }
 
 
@@ -1135,6 +1319,56 @@ input, textarea, button {
     font-size: 0.8rem;
 }
 
+.pub-authors {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.pub-authors strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.pub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.4rem;
+}
+
+.pub-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.pub-link-btn:hover {
+    color: var(--text-primary);
+    background: rgba(99, 102, 241, 0.08);
+    border-color: var(--accent-indigo);
+}
+
+[data-theme="light"] .pub-link-btn {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .pub-link-btn:hover {
+    background: rgba(99, 102, 241, 0.05);
+    color: var(--accent-indigo);
+    border-color: var(--accent-indigo);
+}
+
 @media (max-width: 768px) {
     .pub-card {
         padding: 1.2rem 1.5rem;
@@ -1247,7 +1481,7 @@ footer {
         order: -1;
     }
     
-    .visual-blob {
+    .profile-image-container {
         width: 260px;
         height: 260px;
     }
