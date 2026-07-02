@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Deep Learning Researcher',
         'Computer Vision Scientist',
         'Remote Sensing Expert',
-        'Quantum ML Pioneer'
+        'Quantum ML Researcher'
     ];
     let phraseIndex = 0;
     let charIndex = 0;
