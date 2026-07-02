@@ -267,45 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // CONTACT FORM INTERACTIVE SUBMISSION
-    // ==========================================
-    const contactForm = document.getElementById('contact-form');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            // Check if action placeholder is set, if so, showcase custom UI success instead of posting to placeholder
-            const action = contactForm.getAttribute('action');
-            if (action.includes('placeholder')) {
-                e.preventDefault();
-                
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitButton.textContent;
-                
-                // Show loading state
-                submitButton.disabled = true;
-                submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-                
-                // Simulate network latency
-                setTimeout(() => {
-                    // Success state
-                    submitButton.style.background = 'linear-gradient(135deg, #22c55e 0%, #10b981 100%)';
-                    submitButton.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
-                    
-                    // Reset Form
-                    contactForm.reset();
-                    
-                    // Reset Button after timeout
-                    setTimeout(() => {
-                        submitButton.disabled = false;
-                        submitButton.style.background = '';
-                        submitButton.textContent = originalText;
-                    }, 3000);
-                }, 1500);
-            }
-        });
-    }
-
-    // ==========================================
     // SCROLL TO ABOUT ON CLICKING MOUSE INDICATOR
     // ==========================================
     const scrollIndicator = document.querySelector('.scroll-indicator');

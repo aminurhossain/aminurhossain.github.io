@@ -19,8 +19,8 @@ A premium, modern, and highly interactive single-page portfolio website designed
    Locate the social links section (lines ~310-314) and change the URLs to direct to your GitHub, LinkedIn, etc.
 3. **Change Project Items**:
    To add or remove showcase cards, update the `.projects-grid` structure in `index.html`. Assign correct `data-category` attributes to ensure filters operate correctly.
-4. **Link a Live Form**:
-   Replace the Formspree URL placeholder (`https://formspree.io/f/placeholder`) in `index.html` with your own unique Formspree form ID to receive emails directly from visitors.
+4. **Contact Form**:
+   The contact form posts through FormSubmit to the email address configured in `index.html`. On the first submission, FormSubmit may send an activation email before forwarding messages.
 
 ## How to Deploy to GitHub Pages
 
