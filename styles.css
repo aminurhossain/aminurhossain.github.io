@@ -1089,6 +1089,12 @@ input, textarea, button {
     width: fit-content;
 }
 
+.phd-supervisor-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
 .phd-meta-link i {
     color: var(--accent-indigo);
     font-size: 0.7rem;
