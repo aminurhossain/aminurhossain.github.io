@@ -1082,6 +1082,27 @@ input, textarea, button {
     color: var(--text-primary);
 }
 
+.phd-meta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: fit-content;
+}
+
+.phd-meta-link i {
+    color: var(--accent-indigo);
+    font-size: 0.7rem;
+    transition: var(--transition-fast);
+}
+
+.phd-meta-link:hover {
+    color: var(--accent-blue);
+}
+
+.phd-meta-link:hover i {
+    transform: translate(2px, -2px);
+}
+
 .phd-meta-val.highlight {
     color: #fbbf24;
 }
