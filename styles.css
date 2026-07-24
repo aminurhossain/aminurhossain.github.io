@@ -1463,6 +1463,87 @@ input, textarea, button {
 }
 
 /* ==========================================
+   VISITOR MAP SECTION
+   ========================================== */
+.visitor-section {
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+}
+
+.visitor-dashboard {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.55fr) minmax(320px, 1.45fr);
+    align-items: stretch;
+    gap: 1.5rem;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.visitor-counter-panel,
+.visitor-map-panel {
+    min-width: 0;
+    padding: 1.5rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+}
+
+.visitor-counter-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.visitor-panel-label {
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.visitor-counter-widget {
+    display: grid;
+    place-items: center;
+    min-width: 90px;
+    min-height: 30px;
+}
+
+.visitor-map-widget {
+    width: min(100%, 500px);
+    aspect-ratio: 2 / 1;
+    margin: 0 auto;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.visitor-map-widget iframe,
+.visitor-map-widget img,
+.visitor-map-widget canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
+}
+
+.visitor-privacy {
+    margin: 1.25rem auto 0;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    text-align: center;
+}
+
+.visitor-privacy a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* ==========================================
    FOOTER
    ========================================== */
 footer {
@@ -1686,6 +1767,16 @@ footer {
         gap: 1rem;
         text-align: center;
     }
+
+    .visitor-dashboard {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+
+    .visitor-counter-panel,
+    .visitor-map-panel {
+        padding: 1.25rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1704,6 +1795,10 @@ footer {
     
     .contact-form-wrapper {
         padding: 2rem 1.5rem;
+    }
+
+    .visitor-section {
+        padding: 4rem 0;
     }
 }
 
