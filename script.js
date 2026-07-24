@@ -1,5 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.documentElement.classList.add('js');
 
+document.addEventListener('DOMContentLoaded', () => {
 
 
     // ==========================================
@@ -10,17 +11,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
 
     if (navToggle && navMenu) {
+        const setNavOpen = (isOpen) => {
+            navToggle.classList.toggle('open', isOpen);
+            navMenu.classList.toggle('open', isOpen);
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+            navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+
+            if (isOpen) {
+                window.requestAnimationFrame(() => navLinks[0]?.focus());
+            }
+        };
+
         navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('open');
-            navMenu.classList.toggle('open');
+            setNavOpen(!navMenu.classList.contains('open'));
         });
 
         // Close menu when a link is clicked
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                navToggle.classList.remove('open');
-                navMenu.classList.remove('open');
+                setNavOpen(false);
+                if (window.matchMedia('(max-width: 1024px)').matches) {
+                    navToggle.focus();
+                }
             });
+        });
+
+        document.addEventListener('click', (event) => {
+            if (navMenu.classList.contains('open') &&
+                !navMenu.contains(event.target) &&
+                !navToggle.contains(event.target)) {
+                setNavOpen(false);
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && navMenu.classList.contains('open')) {
+                setNavOpen(false);
+                navToggle.focus();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024 && navMenu.classList.contains('open')) {
+                setNavOpen(false);
+            }
         });
     }
 
@@ -57,8 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (navLink) {
                 if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    navLinks.forEach(link => link.classList.remove('active'));
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        link.removeAttribute('aria-current');
+                    });
                     navLink.classList.add('active');
+                    navLink.setAttribute('aria-current', 'page');
                 }
             }
         });
@@ -74,23 +112,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const root = document.documentElement;
 
     // Load saved theme preference
-    const savedTheme = localStorage.getItem('portfolio-theme');
+    let savedTheme = null;
+    try {
+        savedTheme = localStorage.getItem('portfolio-theme');
+    } catch (error) {
+        console.warn('Theme preference storage is unavailable.', error);
+    }
+
+    const updateThemeControl = () => {
+        const isLight = root.getAttribute('data-theme') === 'light';
+        themeIcon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+        themeToggle.setAttribute('aria-pressed', String(isLight));
+    };
+
     if (savedTheme) {
         root.setAttribute('data-theme', savedTheme);
-        themeIcon.className = savedTheme === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
     }
+    updateThemeControl();
 
     themeToggle.addEventListener('click', () => {
         const current = root.getAttribute('data-theme');
         if (current === 'light') {
             root.removeAttribute('data-theme');
-            localStorage.setItem('portfolio-theme', 'dark');
-            themeIcon.className = 'fa-solid fa-moon';
+            try {
+                localStorage.setItem('portfolio-theme', 'dark');
+            } catch (error) {
+                console.warn('Theme preference could not be saved.', error);
+            }
         } else {
             root.setAttribute('data-theme', 'light');
-            localStorage.setItem('portfolio-theme', 'light');
-            themeIcon.className = 'fa-solid fa-sun';
+            try {
+                localStorage.setItem('portfolio-theme', 'light');
+            } catch (error) {
+                console.warn('Theme preference could not be saved.', error);
+            }
         }
+        updateThemeControl();
     });
 
     // ==========================================
@@ -142,27 +200,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Start typing animation
-    setTimeout(typePhrase, 1000);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        typedElement.textContent = phrases[0];
+    } else {
+        setTimeout(typePhrase, 1000);
+    }
 
     // ==========================================
     // SCROLL REVEAL (Intersection Observer)
     // ==========================================
     const revealElements = document.querySelectorAll('.reveal');
 
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                revealObserver.unobserve(entry.target);
-            }
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
         });
-    }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -40px 0px'
-    });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+        revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+        revealElements.forEach(el => el.classList.add('revealed'));
+    }
 
     // ==========================================
     // PROJECTS PORTFOLIO FILTER
@@ -212,57 +277,87 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTech = document.getElementById('modal-tech');
     const modalGithub = document.getElementById('modal-github');
     const modalDemo = document.getElementById('modal-demo');
+    const modalFocusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    let lastFocusedElement = null;
+
+    const closeModal = () => {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+        }
+    };
+
+    const openProjectModal = (card, trigger) => {
+        const title = card.getAttribute('data-title');
+        const description = card.getAttribute('data-description');
+        const tech = card.getAttribute('data-tech');
+        const github = card.getAttribute('data-github');
+        const demo = card.getAttribute('data-demo');
+        const tag = card.querySelector('.project-tag')?.textContent || '';
+
+        modalTag.textContent = tag;
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+        modalGithub.href = github;
+        modalDemo.href = demo;
+
+        modalTech.innerHTML = '';
+        tech.split(',').forEach(t => {
+            const span = document.createElement('span');
+            span.textContent = t.trim();
+            modalTech.appendChild(span);
+        });
+
+        lastFocusedElement = trigger;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        window.requestAnimationFrame(() => modalClose.focus());
+    };
 
     projectCards.forEach(card => {
         card.addEventListener('click', (e) => {
-            // Prevent modal from opening when clicking on direct overlay links
-            if (e.target.closest('.project-link-icon')) return;
+            const detailsButton = e.target.closest('.project-details-btn');
+            if (e.target.closest('.project-link-icon') && !detailsButton) return;
 
-            const title = card.getAttribute('data-title');
-            const description = card.getAttribute('data-description');
-            const tech = card.getAttribute('data-tech');
-            const github = card.getAttribute('data-github');
-            const demo = card.getAttribute('data-demo');
-            const tag = card.querySelector('.project-tag')?.textContent || '';
-
-            modalTag.textContent = tag;
-            modalTitle.textContent = title;
-            modalDescription.textContent = description;
-            modalGithub.href = github;
-            modalDemo.href = demo;
-
-            // Populate tech tags
-            modalTech.innerHTML = '';
-            tech.split(',').forEach(t => {
-                const span = document.createElement('span');
-                span.textContent = t.trim();
-                modalTech.appendChild(span);
-            });
-
-            modal.classList.add('open');
-            document.body.style.overflow = 'hidden';
+            openProjectModal(card, detailsButton || document.activeElement);
         });
     });
 
     // Close modal
-    modalClose.addEventListener('click', () => {
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-    });
+    modalClose.addEventListener('click', closeModal);
 
     // Close modal on backdrop click
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-            modal.classList.remove('open');
-            document.body.style.overflow = '';
+            closeModal();
         }
     });
 
-    // Close modal on Escape key
+    // Keep keyboard focus inside the open modal.
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('open')) {
-            modal.classList.remove('open');
-            document.body.style.overflow = '';
+        if (!modal.classList.contains('open')) return;
+
+        if (e.key === 'Escape') {
+            closeModal();
+            return;
+        }
+
+        if (e.key === 'Tab') {
+            const focusableElements = [...modal.querySelectorAll(modalFocusableSelector)];
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (e.shiftKey && document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement.focus();
+            } else if (!e.shiftKey && document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement.focus();
+            }
         }
     });
 

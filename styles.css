@@ -8,7 +8,7 @@
     --bg-tertiary: #1b243c;
     --text-primary: #f8fafc;
     --text-secondary: #94a3b8;
-    --text-muted: #64748b;
+    --text-muted: #7f8fa6;
     
     --accent-blue: #3b82f6;
     --accent-indigo: #6366f1;
@@ -50,7 +50,7 @@
     --bg-tertiary: #e2e8f0;
     --text-primary: #0f172a;
     --text-secondary: #475569;
-    --text-muted: #94a3b8;
+    --text-muted: #5f6f85;
     --border-color: rgba(0, 0, 0, 0.08);
     --border-hover: rgba(0, 0, 0, 0.15);
     --glass-bg: rgba(248, 250, 252, 0.85);
@@ -120,6 +120,11 @@ input, textarea, button {
     background: none;
     border: none;
     outline: none;
+}
+
+:where(a, button, input, textarea, [tabindex]):focus-visible {
+    outline: 3px solid var(--accent-blue);
+    outline-offset: 3px;
 }
 
 /* ==========================================
@@ -321,6 +326,7 @@ input, textarea, button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1.25rem;
     height: 100%;
 }
 
@@ -332,6 +338,7 @@ input, textarea, button {
     display: flex;
     align-items: center;
     gap: 0.35rem;
+    margin-right: auto;
     transition: var(--transition-fast);
 }
 
@@ -379,7 +386,12 @@ input, textarea, button {
 .nav-toggle {
     display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 6px;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
     cursor: pointer;
 }
 
@@ -801,6 +813,10 @@ input, textarea, button {
 }
 
 .project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-card:focus-within .project-overlay {
     opacity: 1;
 }
 
@@ -1462,6 +1478,14 @@ input, textarea, button {
     }
 }
 
+.form-honeypot {
+    position: absolute !important;
+    left: -10000px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+}
+
 /* ==========================================
    VISITOR MAP SECTION
    ========================================== */
@@ -1658,55 +1682,58 @@ footer {
     .social-links {
         justify-content: center;
     }
+
+    .nav-menu {
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        width: min(80%, 360px);
+        height: calc(100vh - var(--header-height));
+        overflow-y: auto;
+        background-color: var(--bg-secondary);
+        border-left: 1px solid var(--border-color);
+        padding: 3rem 2rem;
+        transition: var(--transition-normal);
+        visibility: hidden;
+        pointer-events: none;
+        z-index: 999;
+    }
+
+    .nav-menu.open {
+        right: 0;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-toggle.open span:first-child {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .nav-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.open span:last-child {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
 }
 
 @media (max-width: 768px) {
     .section-title {
         font-size: 2rem;
-    }
-    
-    /* Navigation drawer for mobile */
-    .nav-menu {
-        position: fixed;
-        top: var(--header-height);
-        right: -100%;
-        width: 80%;
-        height: calc(100vh - var(--header-height));
-        background-color: var(--bg-secondary);
-        border-left: 1px solid var(--border-color);
-        padding: 3rem 2rem;
-        transition: var(--transition-normal);
-        z-index: 999;
-    }
-    
-    .nav-menu.open {
-        right: 0;
-    }
-    
-    .nav-list {
-        flex-direction: column;
-        gap: 2.5rem;
-    }
-    
-    .nav-link {
-        font-size: 1.2rem;
-    }
-    
-    .nav-toggle {
-        display: flex;
-    }
-    
-    /* Active navigation toggle */
-    .nav-toggle.open span:first-child {
-        transform: rotate(45deg) translate(6px, 6px);
-    }
-    
-    .nav-toggle.open span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .nav-toggle.open span:last-child {
-        transform: rotate(-45deg) translate(5px, -6px);
     }
     
     .timeline::after {
@@ -1805,13 +1832,18 @@ footer {
    SCROLL REVEAL ANIMATIONS
    ========================================== */
 .reveal {
+    opacity: 1;
+    transform: none;
+}
+
+.js .reveal {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.revealed {
+.js .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
 }

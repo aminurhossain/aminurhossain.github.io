@@ -13,10 +13,39 @@
     <meta property="og:url" content="https://aminurhossain.github.io/">
     <meta property="og:image" content="https://aminurhossain.github.io/profile.jpg">
     <meta property="og:image:alt" content="Aminur Hossain">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Aminur Hossain | PhD Researcher | Deep Learning & Remote Sensing">
     <meta name="twitter:description" content="Research portfolio covering remote sensing, deep learning, computer vision, generative AI, and quantum machine learning.">
     <meta name="twitter:image" content="https://aminurhossain.github.io/profile.jpg">
+    <link rel="icon" href="profile.jpg" type="image/jpeg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Md Aminur Hossain",
+      "url": "https://aminurhossain.github.io/",
+      "image": "https://aminurhossain.github.io/profile.jpg",
+      "jobTitle": "Scientist-SE and PhD Scholar",
+      "affiliation": [
+        {
+          "@type": "Organization",
+          "name": "Space Applications Centre, ISRO"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Indian Institute of Technology Bombay"
+        }
+      ],
+      "sameAs": [
+        "https://scholar.google.com/citations?user=diUbiq0AAAAJ&hl=en",
+        "https://github.com/aminurhossain",
+        "https://www.linkedin.com/in/aminurhossain",
+        "https://www.researchgate.net/profile/Md-Aminur-Hossain"
+      ]
+    }
+    </script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,9 +69,9 @@
                 <span class="gradient-text">Aminur Hossain</span>
             </a>
             
-            <nav class="nav-menu" id="nav-menu">
+            <nav class="nav-menu" id="nav-menu" aria-label="Primary navigation">
                 <ul class="nav-list">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#home" class="nav-link active" aria-current="page">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#highlights" class="nav-link">Highlights</a></li>
                     <li><a href="#research" class="nav-link">Research</a></li>
@@ -56,11 +85,11 @@
                 <i class="fa-solid fa-moon" id="theme-icon"></i>
             </button>
 
-            <div class="nav-toggle" id="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open navigation menu" aria-controls="nav-menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
         </div>
     </header>
 
@@ -90,12 +119,12 @@
                     </div>
                 </div>
             </div>
-            <div class="scroll-indicator">
+            <button type="button" class="scroll-indicator" aria-label="Scroll to the About section">
                 <span class="mouse">
                     <span class="wheel"></span>
                 </span>
-                <p>Scroll Down</p>
-            </div>
+                <span>Scroll Down</span>
+            </button>
         </section>
 
         <!-- About Section -->
@@ -114,7 +143,7 @@
                         <p>Currently, I am working as a Scientist-SE at the <a href="https://www.sac.gov.in/" target="_blank" rel="noopener noreferrer" class="inline-link">Space Applications Centre</a>, <a href="https://www.isro.gov.in/" target="_blank" rel="noopener noreferrer" class="inline-link">ISRO</a>, Ahmedabad, India.</p>
                         <div class="stats-grid">
                             <div class="stat-card">
-                                <span class="stat-number">14+</span>
+                                <span class="stat-number">13+</span>
                                 <span class="stat-label">Publications</span>
                             </div>
                             <div class="stat-card">
@@ -269,8 +298,9 @@
                             </div>
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="https://github.com/aminurhossain" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                                    <a href="https://scholar.google.com/citations?user=diUbiq0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+                                    <button type="button" class="project-link-icon project-details-btn" aria-label="View details for Deep Learning for Remote Sensing" title="View details"><i class="fa-solid fa-circle-info"></i></button>
+                                    <a href="https://github.com/aminurhossain" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="GitHub" aria-label="Open GitHub profile"><i class="fa-brands fa-github"></i></a>
+                                    <a href="https://scholar.google.com/citations?user=diUbiq0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="Google Scholar" aria-label="Open Google Scholar profile"><i class="fa-solid fa-graduation-cap"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -295,8 +325,9 @@
                             </div>
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="https://github.com/aminurhossain" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                                    <a href="https://scholar.google.com/citations?user=diUbiq0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+                                    <button type="button" class="project-link-icon project-details-btn" aria-label="View details for Generative AI and Multi-Modal Models" title="View details"><i class="fa-solid fa-circle-info"></i></button>
+                                    <a href="https://github.com/aminurhossain" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="GitHub" aria-label="Open GitHub profile"><i class="fa-brands fa-github"></i></a>
+                                    <a href="https://scholar.google.com/citations?user=diUbiq0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="Google Scholar" aria-label="Open Google Scholar profile"><i class="fa-solid fa-graduation-cap"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -321,8 +352,9 @@
                             </div>
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="https://github.com/aminurhossain" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                                    <a href="https://scholar.google.com/citations?user=diUbiq0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+                                    <button type="button" class="project-link-icon project-details-btn" aria-label="View details for Quantum-Classical Hybrid Networks" title="View details"><i class="fa-solid fa-circle-info"></i></button>
+                                    <a href="https://github.com/aminurhossain" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="GitHub" aria-label="Open GitHub profile"><i class="fa-brands fa-github"></i></a>
+                                    <a href="https://scholar.google.com/citations?user=diUbiq0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="Google Scholar" aria-label="Open Google Scholar profile"><i class="fa-solid fa-graduation-cap"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -346,8 +378,9 @@
                             </div>
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="https://github.com/aminurhossain" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                                    <a href="https://scholar.google.com/citations?user=diUbiq0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+                                    <button type="button" class="project-link-icon project-details-btn" aria-label="View details for Computer Vision and Image Processing" title="View details"><i class="fa-solid fa-circle-info"></i></button>
+                                    <a href="https://github.com/aminurhossain" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="GitHub" aria-label="Open GitHub profile"><i class="fa-brands fa-github"></i></a>
+                                    <a href="https://scholar.google.com/citations?user=diUbiq0AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="project-link-icon" title="Google Scholar" aria-label="Open Google Scholar profile"><i class="fa-solid fa-graduation-cap"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -769,7 +802,8 @@
                         <form id="contact-form" class="contact-form" action="https://formsubmit.co/md.aminurhossain@gmail.com" method="POST">
                             <input type="hidden" name="_subject" value="New message from aminurhossain.github.io">
                             <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_captcha" value="true">
+                            <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
                             <div class="form-group">
                                 <label for="name">Your Name</label>
                                 <input type="text" id="name" name="name" placeholder="John Doe" required>
@@ -823,11 +857,11 @@
     </footer>
 
     <!-- Project Detail Modal -->
-    <div class="modal-overlay" id="project-modal">
-        <div class="modal-content">
+    <div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-content" role="document">
             <button class="modal-close" id="modal-close" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
             <span class="modal-tag" id="modal-tag"></span>
-            <h3 class="modal-title" id="modal-title"></h3>
+            <h3 class="modal-title" id="modal-title">Project details</h3>
             <p class="modal-description" id="modal-description"></p>
             <div class="modal-tech" id="modal-tech"></div>
             <div class="modal-actions">
