@@ -1023,6 +1023,48 @@ input, textarea, button {
     font-size: 0.95rem;
 }
 
+.timeline-advisor {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.timeline-advisor > i {
+    color: var(--accent-indigo);
+}
+
+.timeline-advisor-label {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.timeline-advisor a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.timeline-advisor a i {
+    color: var(--accent-indigo);
+    font-size: 0.7rem;
+    transition: var(--transition-fast);
+}
+
+.timeline-advisor a:hover {
+    color: var(--accent-blue);
+}
+
+.timeline-advisor a:hover i {
+    transform: translate(2px, -2px);
+}
+
 .phd-card {
     margin-top: 1.5rem;
     padding: 1.5rem;
