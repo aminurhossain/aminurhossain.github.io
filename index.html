@@ -88,6 +88,7 @@
 </head>
 <body>
 
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <!-- Background Decoration -->
     <div class="glow-bg-1"></div>
@@ -124,7 +125,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
         <!-- Hero Section -->
         <section id="home" class="hero-section">
             <div class="container hero-container">
@@ -559,6 +560,7 @@
                     <h2 class="section-title">Publications</h2>
                     <p class="section-subtitle">Published, accepted, and under-review research in remote sensing, computer vision, and quantum computing</p>
                 </div>
+                <div id="copy-status" class="sr-only" role="status" aria-live="polite"></div>
 
                 <!-- Year Group: 2026 -->
                 <div class="pub-year-group">
@@ -847,12 +849,12 @@
                             <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
                             <div class="form-group">
                                 <label for="name">Your Name</label>
-                                <input type="text" id="name" name="name" placeholder="John Doe" required>
+                                <input type="text" id="name" name="name" placeholder="John Doe" autocomplete="name" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="email">Your Email</label>
-                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email" required>
                             </div>
 
                             <div class="form-group">
@@ -860,7 +862,8 @@
                                 <textarea id="message" name="message" rows="5" placeholder="Let's build something amazing together..." required></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                            <button type="submit" class="btn btn-primary btn-block" id="contact-submit">Send Message</button>
+                            <p class="form-status" id="contact-form-status" role="status" aria-live="polite"></p>
                         </form>
                     </div>
                 </div>
@@ -877,7 +880,7 @@
 
                 <div class="visitor-map-widget">
                     <a class="visitor-map-link" href="https://info.flagcounter.com/Gf6X" target="_blank" rel="noopener noreferrer" aria-label="View detailed visitor statistics">
-                        <img src="https://s01.flagcounter.com/map/Gf6X/size_m/txt_E5E7EB/border_374151/pageviews_1/viewers_0/flags_0/" width="600" height="291" alt="Visitor location map and total page views">
+                        <img src="https://s01.flagcounter.com/map/Gf6X/size_m/txt_E5E7EB/border_374151/pageviews_1/viewers_0/flags_0/" width="600" height="291" alt="Visitor location map and total page views" loading="lazy" decoding="async">
                     </a>
                 </div>
 
@@ -906,8 +909,8 @@
             <p class="modal-description" id="modal-description"></p>
             <div class="modal-tech" id="modal-tech"></div>
             <div class="modal-actions">
-                <a href="#" class="btn btn-primary" id="modal-github" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> View Code</a>
-                <a href="#" class="btn btn-secondary" id="modal-demo" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+                <a href="#" class="btn btn-primary" id="modal-github" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Profile</a>
+                <a href="#" class="btn btn-secondary" id="modal-demo" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
             </div>
         </div>
     </div>

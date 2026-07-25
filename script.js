@@ -378,23 +378,105 @@ document.addEventListener('DOMContentLoaded', () => {
     // BIBTEX COPY TO CLIPBOARD
     // ==========================================
     const bibtexButtons = document.querySelectorAll('.bibtex-btn');
+    const copyStatus = document.getElementById('copy-status');
+
+    const copyText = async (text) => {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.setAttribute('readonly', '');
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        const previouslyFocused = document.activeElement;
+        document.body.appendChild(textArea);
+        textArea.select();
+
+        const copied = document.execCommand('copy');
+        textArea.remove();
+        previouslyFocused?.focus();
+
+        if (!copied) {
+            throw new Error('The browser rejected the copy command.');
+        }
+    };
+
     bibtexButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', async (e) => {
             e.stopPropagation();
             const bibtexText = btn.getAttribute('data-bibtex');
-            navigator.clipboard.writeText(bibtexText).then(() => {
-                const originalHTML = btn.innerHTML;
-                btn.innerHTML = '<i class="fa-solid fa-check" style="color: #22c55e;"></i> Copied!';
-                btn.style.borderColor = '#22c55e';
-                btn.style.color = '#22c55e';
-                setTimeout(() => {
-                    btn.innerHTML = originalHTML;
-                    btn.style.borderColor = '';
-                    btn.style.color = '';
-                }, 2000);
-            }).catch(err => {
+            const originalHTML = btn.innerHTML;
+            btn.disabled = true;
+            copyStatus.textContent = '';
+
+            try {
+                await copyText(bibtexText);
+                btn.classList.add('copy-success');
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+                copyStatus.textContent = 'BibTeX citation copied to the clipboard.';
+            } catch (err) {
                 console.error('Could not copy BibTeX: ', err);
-            });
+                btn.classList.add('copy-error');
+                btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Copy failed';
+                copyStatus.textContent = 'The citation could not be copied. Please try again.';
+            }
+
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('copy-success', 'copy-error');
+                btn.disabled = false;
+            }, 2000);
         });
     });
+
+    // ==========================================
+    // CONTACT FORM
+    // ==========================================
+    const contactForm = document.getElementById('contact-form');
+    const contactSubmit = document.getElementById('contact-submit');
+    const contactFormStatus = document.getElementById('contact-form-status');
+
+    if (contactForm && contactSubmit && contactFormStatus) {
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            contactSubmit.disabled = true;
+            contactSubmit.textContent = 'Sending...';
+            contactFormStatus.textContent = '';
+            contactFormStatus.removeAttribute('data-state');
+
+            const ajaxEndpoint = contactForm.action.replace(
+                'https://formsubmit.co/',
+                'https://formsubmit.co/ajax/'
+            );
+
+            try {
+                const response = await fetch(ajaxEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json'
+                    },
+                    body: new FormData(contactForm)
+                });
+                const result = await response.json();
+
+                if (!response.ok || result.success === false) {
+                    throw new Error(result.message || 'The message could not be sent.');
+                }
+
+                contactForm.reset();
+                contactFormStatus.dataset.state = 'success';
+                contactFormStatus.textContent = 'Your message was sent successfully.';
+            } catch (error) {
+                console.error('Contact form submission failed:', error);
+                contactFormStatus.dataset.state = 'error';
+                contactFormStatus.textContent = 'Unable to send your message. Please email me directly instead.';
+            } finally {
+                contactSubmit.disabled = false;
+                contactSubmit.textContent = 'Send Message';
+            }
+        });
+    }
 });
