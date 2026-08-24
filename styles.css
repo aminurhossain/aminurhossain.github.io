@@ -508,8 +508,6 @@ input, textarea, button {
     width: 320px;
     height: 320px;
     border-radius: 50%;
-    border: 6px solid var(--bg-secondary);
-    outline: 2px solid var(--accent-indigo);
     box-shadow: var(--shadow-md), var(--shadow-glow);
     overflow: hidden;
     display: flex;
@@ -520,7 +518,6 @@ input, textarea, button {
 }
 
 .profile-image-container:hover {
-    outline-color: var(--accent-purple);
     transform: translateY(-5px);
 }
 
@@ -530,7 +527,6 @@ input, textarea, button {
     height: 100%;
     object-fit: cover;
     border-radius: inherit;
-    border: 3px solid transparent;
     transition: var(--transition-normal);
 }
 
