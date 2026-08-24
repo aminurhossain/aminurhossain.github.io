@@ -1651,12 +1651,11 @@ input, textarea, button {
 }
 
 .visitor-map-widget {
-    width: min(100%, 610px);
+    width: min(100%, 608px);
     margin: 0 auto;
     padding: 4px;
     overflow: hidden;
     background: #ffffff;
-    border: 1px solid #cbd5e1;
     border-radius: 6px;
 }
 
