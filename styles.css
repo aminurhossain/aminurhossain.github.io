@@ -1650,20 +1650,14 @@ input, textarea, button {
     border-top: 1px solid var(--border-color);
 }
 
-.visitor-map-widget {
-    width: min(100%, 600px);
-    margin: 0 auto;
-    overflow: visible;
-    background: transparent;
-}
-
 .visitor-map-link {
     display: block;
-    width: 100%;
+    width: min(100%, 600px);
+    margin: 0 auto;
     line-height: 0;
 }
 
-.visitor-map-widget img {
+.visitor-map-link img {
     display: block;
     width: 100%;
     max-width: 600px;
